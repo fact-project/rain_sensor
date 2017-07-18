@@ -1,7 +1,0 @@
-syntax = 'proto2';
-
-message SerialData {
-  required uint64 time = 1;
-  required float temperature = 2;
-  required float humidity = 3;
-}
