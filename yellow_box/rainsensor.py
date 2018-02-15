@@ -38,7 +38,6 @@ def main(outdir, current_path, debug):
 
     while True:
         report = b.read()  # read blocks until a fresh report comes in
-        send_to_dominik(report)
         write_to_current(report, current_path)
         with open(filename(outdir), 'a') as file:
             save_to_file(report, file)
@@ -56,16 +55,6 @@ def write_to_current(report, path):
         d = dict(report._asdict())
         d['timestamp_utc'] = datetime.utcnow().isoformat()
         json.dump(d, file)
-
-
-def send_to_dominik(report):
-    try:
-        requests.post(
-            'http://ihp-pc41.ethz.ch:5001/yellowbox',
-            data={report.__class__.__name__: msgpack.packb(report)}
-        )
-    except (requests.RequestException, socket.timeout):
-        log.exception('could not write to Dominik')
 
 
 def save_to_file(report, file):
