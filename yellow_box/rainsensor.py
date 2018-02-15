@@ -48,7 +48,7 @@ def main(outdir, current_path, debug):
         except (KeyboardInterrupt, SystemExit):
             raise
         except:
-            # log the exception and go on
+            # log the exception and and traceback
             log.exception('')
 
 
