@@ -36,10 +36,16 @@ def main(outdir, current_path, debug):
         b = YellowBox()
 
     while True:
-        report = b.read()  # read blocks until a fresh report comes in
-        write_to_current(report, current_path)
-        with open(filename(outdir), 'a') as file:
-            save_to_file(report, file)
+        try:
+            report = b.read()  # read blocks until a fresh report comes in
+            write_to_current(report, current_path)
+            with open(filename(outdir), 'a') as file:
+                save_to_file(report, file)
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except:
+            # log the exception and go on
+            log.exception()
 
 
 def filename(outdir):
