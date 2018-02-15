@@ -9,13 +9,15 @@ import logging
 
 logging.basicConfig(
     filename=os.path.join(
-      os.path.dirname(
-      os.path.realpath(__file__)),
-      'rainsensor.log'
-      ),
+        os.path.dirname(
+            os.path.realpath(__file__)
+        ),
+        'rainsensor.log'
+    ),
     level=logging.DEBUG
 )
 log = logging.getLogger(__name__)
+
 
 @click.command()
 @click.argument(
