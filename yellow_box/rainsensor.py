@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 import os
-import requests
-import msgpack
 import json
 from datetime import datetime
 from yellow_box import YellowBox, YellowBoxMockup
 
 import click
-import socket
 import logging
 
 logging.basicConfig(
